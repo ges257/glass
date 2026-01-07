@@ -8,12 +8,10 @@ GLASS is a hybrid system combining Vision-Language Models, heuristic validation,
 
 ## High-Level Pipeline
 
-```
-PDF → VLM → Human Review → Validation → Output
-       ↓         ↓             ↓
-   Proposal   Refinement    Quality
-                  ↓
-              Template → Reuse
+```mermaid
+flowchart LR
+    PDF --> VLM --> Human --> Validation --> Output
+    Human --> Template --> Reuse
 ```
 
 ---
@@ -82,24 +80,14 @@ Failed validation flags the row for human review.
 
 ## Data Flow
 
+```mermaid
+flowchart TD
+    A[New PDF] --> B[Template Created]
+    B --> C[Similar PDFs]
+    C --> D[Auto-Extract]
 ```
-PDF → PNG Render → VLM Analysis → Boundary Proposals → Template
-                                                         │
-                                                         ▼
-                                                  Human Adjustment
-                                                         │
-                                                         ▼
-                                                 Validated Template
-                                                         │
-                    ┌────────────────────────────────────┼───────────────────┐
-                    │                                    │                   │
-                    ▼                                    ▼                   ▼
-            Similar Doc 1                        Similar Doc 2        Similar Doc N
-                    │                                    │                   │
-                    ▼                                    ▼                   ▼
-            Auto-extraction                      Auto-extraction      Auto-extraction
-            (zero cost)                          (zero cost)          (zero cost)
-```
+
+First document creates template. Similar documents reuse it at zero cost.
 
 ---
 
