@@ -6,13 +6,53 @@ GLASS is a hybrid system combining Vision-Language Models, heuristic validation,
 
 ---
 
-## High-Level Pipeline
+## v1 Architecture (Academic)
+
+Pure ML pipeline from the research paper:
 
 ```mermaid
 flowchart LR
-    PDF --> VLM --> Human --> Validation --> Output
-    Human --> Template --> Reuse
+    PDF --> Ingest[PdfIngestor]
+    Ingest --> M1[Model 1\nRegion]
+    M1 --> M2[Model 2\nRow-Type]
+    M2 --> M6[Model 6\nColumn]
+    M6 --> Export
 ```
+
+| Model | Task | Accuracy |
+|-------|------|----------|
+| Model 1 | Region Classification | 99.96% |
+| Model 2 | Row-Type Classification | 99.33% |
+| Model 6 | Column Detection | 86.6% K-acc |
+
+---
+
+## Production Architecture (Hybrid)
+
+Evolved system combining VLM + ML + Human:
+
+```mermaid
+flowchart LR
+    subgraph VLM/LLM ["VLM + LLM"]
+        VLM[Column Detection]
+        LLM[Semantic Understanding]
+    end
+
+    subgraph ML ["ML Models"]
+        M1[Model 1: Region]
+        M2[Model 2: Row-Type]
+    end
+
+    PDF --> VLM/LLM
+    PDF --> ML
+    VLM/LLM --> Merge
+    ML --> Merge
+    Merge --> Human[Human Review]
+    Human --> Validation
+    Validation --> Output
+```
+
+The hybrid architecture uses VLM for visual column proposals and ML models for structural classification, with human refinement for production reliability.
 
 ---
 
