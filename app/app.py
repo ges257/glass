@@ -74,8 +74,8 @@ if 'template' not in st.session_state:
 image = Image.open(SAMPLE_IMAGE)
 img_width, img_height = image.size
 
-# Scale for display (smaller for better mobile/tablet fit)
-DISPLAY_SCALE = 0.45
+# Scale for display
+DISPLAY_SCALE = 0.50
 display_width = int(img_width * DISPLAY_SCALE)
 display_height = int(img_height * DISPLAY_SCALE)
 
@@ -96,8 +96,11 @@ def template_to_bboxes(template, disp_w, disp_h):
         x_start = col['x_start']
         x_end = col['x_end']
 
-        x = int(x_start * disp_w)
-        w = int((x_end - x_start) * disp_w)
+        # Calculate full width then reduce by 40% for less intrusive display
+        full_w = (x_end - x_start) * disp_w
+        w = int(full_w * 0.6)  # 60% of original width
+        # Center the narrower box within the column
+        x = int(x_start * disp_w + full_w * 0.2)
 
         bboxes.append([x, y, w, h])
         label_list.append(col['name'])
