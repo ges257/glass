@@ -1,0 +1,59 @@
+{
+  "document_type": "Statement of Disbursements",
+  "columns": [
+    {
+      "name": "DATE",
+      "x_start": 0.00,
+      "x_end": 0.17,
+      "data_type": "date"
+    },
+    {
+      "name": "PAID TO",
+      "x_start": 0.17,
+      "x_end": 0.29,
+      "data_type": "text"
+    },
+    {
+      "name": "VEND",
+      "x_start": 0.29,
+      "x_end": 0.33,
+      "data_type": "text"
+    },
+    {
+      "name": "G/L EXPENSE TYPE",
+      "x_start": 0.33,
+      "x_end": 0.45,
+      "data_type": "text"
+    },
+    {
+      "name": "P/O",
+      "x_start": 0.45,
+      "x_end": 0.52,
+      "data_type": "text"
+    },
+    {
+      "name": "INVOICE",
+      "x_start": 0.52,
+      "x_end": 0.57,
+      "data_type": "number"
+    },
+    {
+      "name": "CK NO",
+      "x_start": 0.57,
+      "x_end": 0.64,
+      "data_type": "text"
+    },
+    {
+      "name": "AMOUNT",
+      "x_start": 0.64,
+      "x_end": 0.70,
+      "data_type": "currency"
+    },
+    {
+      "name": "REMARKS",
+      "x_start": 0.70,
+      "x_end": 1.00,
+      "data_type": "text"
+    }
+  ]
+}
