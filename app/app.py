@@ -24,9 +24,6 @@ st.markdown("""
         font-size: 2.5rem;
         font-weight: 700;
         color: #0D1B2A;
-        background: linear-gradient(90deg, #0D1B2A 0%, #1a2d42 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
     }
     .sub-header {
         font-size: 1.1rem;
@@ -35,26 +32,13 @@ st.markdown("""
         font-weight: 500;
     }
     .info-box {
-        background: linear-gradient(135deg, #0D1B2A08 0%, #A78BFA15 100%);
+        background-color: #f8f9fa;
         border-left: 4px solid #A78BFA;
         padding: 1rem;
         border-radius: 0 8px 8px 0;
         margin: 1rem 0;
     }
-    .stButton > button {
-        background-color: #A78BFA;
-        color: white;
-        border: none;
-        border-radius: 6px;
-    }
-    .stButton > button:hover {
-        background-color: #9061F9;
-    }
     h3 { color: #0D1B2A; }
-    .stDownloadButton > button {
-        background-color: #0D1B2A;
-        color: white;
-    }
 </style>
 """, unsafe_allow_html=True)
 
