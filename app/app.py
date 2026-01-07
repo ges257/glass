@@ -96,11 +96,11 @@ def template_to_bboxes(template, disp_w, disp_h):
         x_start = col['x_start']
         x_end = col['x_end']
 
-        # Calculate full width then reduce by 40% for less intrusive display
+        # Calculate full width then reduce for less intrusive display
         full_w = (x_end - x_start) * disp_w
-        w = int(full_w * 0.6)  # 60% of original width
+        w = int(full_w * 0.53)  # 53% of original width
         # Center the narrower box within the column
-        x = int(x_start * disp_w + full_w * 0.2)
+        x = int(x_start * disp_w + full_w * 0.235)
 
         bboxes.append([x, y, w, h])
         label_list.append(col['name'])
