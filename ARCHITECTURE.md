@@ -151,8 +151,8 @@ This hybrid approach outperforms any single component type.
 |-------------|---------|
 | Pure ML | Failed on real-world layout variety |
 | Pure OCR | No table structure understanding |
-| Manual extraction | Too slow (30 min/doc) |
-| **Hybrid (GLASS)** | **97% accuracy, 3 min/doc** |
+| Manual extraction | Does not scale |
+| **Hybrid (GLASS)** | **97% accuracy** |
 
 The architecture emerged from practical failure:
 1. Pure ML failed → Add human refinement
@@ -166,8 +166,8 @@ The architecture emerged from practical failure:
 
 | Metric | Value |
 |--------|-------|
-| First document | 3 min (human refinement) |
-| Subsequent documents | ~5 sec (template reuse) |
+| First document | Human refinement required |
+| Subsequent documents | Template reuse (near-zero cost) |
 | Templates created | 14+ (one per vendor layout) |
 | Documents processed | 800+ rows extracted |
 
