@@ -158,8 +158,7 @@ with col1:
 
     # Get bboxes using display dimensions
     bboxes, label_list = template_to_bboxes(st.session_state.template, display_width, display_height)
-    # Use spread-out indices to get more distinct colors from the palette
-    labels = [0, 1, 2, 3, 4, 5, 7, 8, 9]  # Skip 6 to avoid color repeat
+    labels = list(range(len(label_list)))
 
     # Detection component (v10 format) with display dimensions
     result = detection(
