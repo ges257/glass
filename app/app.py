@@ -17,15 +17,43 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS
+# Custom CSS - Design System: Navy #0D1B2A, Purple #A78BFA
 st.markdown("""
 <style>
-    .main-header { font-size: 2.5rem; font-weight: 700; color: #0D1B2A; }
-    .sub-header { font-size: 1.1rem; color: #6B7280; margin-bottom: 2rem; }
+    .main-header {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0D1B2A;
+        background: linear-gradient(90deg, #0D1B2A 0%, #1a2d42 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .sub-header {
+        font-size: 1.1rem;
+        color: #A78BFA;
+        margin-bottom: 2rem;
+        font-weight: 500;
+    }
     .info-box {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        background: linear-gradient(135deg, #0D1B2A08 0%, #A78BFA15 100%);
         border-left: 4px solid #A78BFA;
-        padding: 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 0 8px 8px 0;
+        margin: 1rem 0;
+    }
+    .stButton > button {
+        background-color: #A78BFA;
+        color: white;
+        border: none;
+        border-radius: 6px;
+    }
+    .stButton > button:hover {
+        background-color: #9061F9;
+    }
+    h3 { color: #0D1B2A; }
+    .stDownloadButton > button {
+        background-color: #0D1B2A;
+        color: white;
     }
 </style>
 """, unsafe_allow_html=True)
