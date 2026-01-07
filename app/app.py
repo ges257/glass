@@ -18,27 +18,34 @@ st.set_page_config(
 )
 
 # Custom CSS - Design System: Navy #0D1B2A, Purple #A78BFA
+# Force light mode and mobile-friendly styling
 st.markdown("""
 <style>
+    .stApp {
+        background-color: #ffffff !important;
+    }
     .main-header {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 700;
-        color: #0D1B2A;
+        color: #0D1B2A !important;
     }
     .sub-header {
-        font-size: 1.1rem;
-        color: #A78BFA;
-        margin-bottom: 2rem;
+        font-size: 1rem;
+        color: #A78BFA !important;
+        margin-bottom: 1rem;
         font-weight: 500;
     }
     .info-box {
-        background-color: #f8f9fa;
+        background-color: #f8f9fa !important;
         border-left: 4px solid #A78BFA;
-        padding: 1rem;
+        padding: 0.75rem;
         border-radius: 0 8px 8px 0;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
+        color: #0D1B2A !important;
     }
-    h3 { color: #0D1B2A; }
+    h3 { color: #0D1B2A !important; }
+    p, span, div { color: #0D1B2A; }
+    .stMarkdown { color: #0D1B2A !important; }
 </style>
 """, unsafe_allow_html=True)
 
