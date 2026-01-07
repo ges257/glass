@@ -164,7 +164,8 @@ with col1:
         bboxes=bboxes,
         labels=labels,
         height=display_height,
-        width=display_width
+        width=display_width,
+        line_width=2
     )
 
     # Update if changed
