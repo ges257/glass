@@ -119,9 +119,7 @@ glass/
 
 ## Try the Demo
 
-**[Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/ges257/glass)**
-
-Or run locally:
+Run locally:
 
 ```bash
 git clone https://github.com/ges257/glass.git
