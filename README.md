@@ -1,4 +1,4 @@
-![Header](https://capsule-render.vercel.app/api?type=rect&color=0D1B2A&height=120&text=GLASS&fontSize=42&fontColor=A78BFA&fontAlign=50&fontAlignY=50&desc=Geometric%20Layout%20Analysis%20%26%20Structuring%20System&descSize=18&descColor=A3B8CC&descAlign=50&descAlignY=75)
+![Header](https://capsule-render.vercel.app/api?type=rect&color=0D1B2A&height=120&text=GLASS%20-%20Geometric%20Layout%20Analysis&fontSize=32&fontColor=A78BFA&fontAlign=50&fontAlignY=50)
 
 <div align="center">
 
