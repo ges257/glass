@@ -145,6 +145,7 @@ with col1:
         image_path=str(SAMPLE_IMAGE),
         bboxes=annotations,
         labels=labels,
+        label_list=labels,
         key="column_annotator"
     )
 
