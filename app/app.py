@@ -67,33 +67,38 @@ if 'template' not in st.session_state:
 image = Image.open(SAMPLE_IMAGE)
 img_width, img_height = image.size
 
+# Scale for display (responsive)
+DISPLAY_SCALE = 0.6
+display_width = int(img_width * DISPLAY_SCALE)
+display_height = int(img_height * DISPLAY_SCALE)
+
 # Table region
 Y_START_PCT = 0.18
 Y_END_PCT = 0.95
 
-# Convert template to bboxes (v10 format)
-def template_to_bboxes(template, img_w, img_h):
-    """Convert to [[x, y, w, h], ...] format."""
+# Convert template to bboxes (v10 format) - uses display dimensions
+def template_to_bboxes(template, disp_w, disp_h):
+    """Convert to [[x, y, w, h], ...] format for display size."""
     bboxes = []
     label_list = []
 
-    y = int(Y_START_PCT * img_h)
-    h = int((Y_END_PCT - Y_START_PCT) * img_h)
+    y = int(Y_START_PCT * disp_h)
+    h = int((Y_END_PCT - Y_START_PCT) * disp_h)
 
     for col in template['columns']:
         x_start = col['x_start']
         x_end = col['x_end']
 
-        x = int(x_start * img_w)
-        w = int((x_end - x_start) * img_w)
+        x = int(x_start * disp_w)
+        w = int((x_end - x_start) * disp_w)
 
         bboxes.append([x, y, w, h])
         label_list.append(col['name'])
 
     return bboxes, label_list
 
-# Convert back
-def bboxes_to_template(result, img_w, original_template):
+# Convert back - uses display width for normalization
+def bboxes_to_template(result, disp_w, original_template):
     """Convert result back to template format."""
     new_template = original_template.copy()
     new_columns = []
@@ -105,8 +110,8 @@ def bboxes_to_template(result, img_w, original_template):
         label = item.get('label', f'Column_{i}')
 
         x, y, w, h = bbox
-        x_start = x / img_w
-        x_end = (x + w) / img_w
+        x_start = x / disp_w
+        x_end = (x + w) / disp_w
 
         orig = orig_cols.get(label, {})
         new_columns.append({
@@ -136,27 +141,28 @@ with col1:
     st.markdown("### Document View")
     st.caption("Drag column boundaries to adjust")
 
-    # Save temp image
+    # Resize image for display
+    display_image = image.resize((display_width, display_height))
     temp_path = "/tmp/glass_demo.png"
-    image.save(temp_path)
+    display_image.save(temp_path)
 
-    # Get bboxes
-    bboxes, label_list = template_to_bboxes(st.session_state.template, img_width, img_height)
+    # Get bboxes using display dimensions
+    bboxes, label_list = template_to_bboxes(st.session_state.template, display_width, display_height)
     labels = list(range(len(label_list)))  # Integer indices
 
-    # Detection component (v10 format)
+    # Detection component (v10 format) with display dimensions
     result = detection(
         image_path=temp_path,
         label_list=label_list,
         bboxes=bboxes,
         labels=labels,
-        height=img_height,
-        width=img_width
+        height=display_height,
+        width=display_width
     )
 
     # Update if changed
     if result and len(result) > 0:
-        new_template = bboxes_to_template(result, img_width, st.session_state.template)
+        new_template = bboxes_to_template(result, display_width, st.session_state.template)
         if new_template['columns'] != st.session_state.template['columns']:
             st.session_state.template = new_template
             st.rerun()
