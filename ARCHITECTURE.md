@@ -9,75 +9,11 @@ GLASS is a hybrid system combining Vision-Language Models, heuristic validation,
 ## High-Level Pipeline
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              GLASS PIPELINE                                  │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-                                    │
-                                    ▼
-                          ┌─────────────────┐
-                          │   PDF Document  │
-                          │                 │
-                          │  Complex table  │
-                          │  layouts        │
-                          └────────┬────────┘
-                                   │
-                                   ▼
-               ┌───────────────────────────────────────┐
-               │         VLM COLUMN DETECTION          │
-               │                                       │
-               │  Vision-Language Model analyzes page  │
-               │  Identifies column structure          │
-               │  Proposes column names                │
-               └───────────────────┬───────────────────┘
-                                   │
-                                   ▼
-               ┌───────────────────────────────────────┐
-               │       BOUNDARY DETECTION              │
-               │                                       │
-               │  X-histogram analysis                 │
-               │  Ruling line detection                │
-               │  Whitespace gap analysis              │
-               └───────────────────┬───────────────────┘
-                                   │
-                                   ▼
-               ┌───────────────────────────────────────┐
-               │       INITIAL TEMPLATE                │
-               │                                       │
-               │  Column names + boundaries            │
-               │  Normalized 0-1 coordinates           │
-               │  JSON format                          │
-               └───────────────────┬───────────────────┘
-                                   │
-                                   ▼
-               ┌───────────────────────────────────────┐
-               │      HUMAN REFINEMENT (UI)            │
-               │                                       │
-               │  Streamlit overlay interface          │
-               │  Drag-to-adjust column edges          │
-               │  Visual feedback                      │
-               └───────────────────┬───────────────────┘
-                                   │
-                                   ▼
-               ┌───────────────────────────────────────┐
-               │       VALIDATION GATES                │
-               │                                       │
-               │  ┌──────────┐ ┌───────────┐          │
-               │  │ DateGate │ │CurrencyGate│          │
-               │  └──────────┘ └───────────┘          │
-               │  ┌───────────┐ ┌────────────┐        │
-               │  │AlignGate  │ │CrossFootGate│        │
-               │  └───────────┘ └────────────┘        │
-               └───────────────────┬───────────────────┘
-                                   │
-                                   ▼
-               ┌───────────────────────────────────────┐
-               │          OUTPUT                       │
-               │                                       │
-               │  Extracted CSV/Excel                  │
-               │  Saved JSON Template                  │
-               │  (Template reused on similar docs)    │
-               └───────────────────────────────────────┘
+PDF → VLM → Human Review → Validation → Output
+       ↓         ↓             ↓
+   Proposal   Refinement    Quality
+                  ↓
+              Template → Reuse
 ```
 
 ---
