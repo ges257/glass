@@ -1,3 +1,14 @@
+---
+title: GLASS
+emoji: 📊
+colorFrom: indigo
+colorTo: purple
+sdk: streamlit
+sdk_version: "1.29.0"
+app_file: app/app.py
+pinned: false
+---
+
 ![Header](https://capsule-render.vercel.app/api?type=rect&color=0D1B2A&height=120&text=GLASS%20|%20Geometric%20Layout%20Analysis%20and%20Structuring%20System&fontSize=24&fontColor=A78BFA&fontAlign=50&fontAlignY=50)
 
 <div align="center">
