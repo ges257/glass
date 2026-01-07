@@ -158,12 +158,16 @@ with col1:
 
     # Get bboxes using display dimensions
     bboxes, label_list = template_to_bboxes(st.session_state.template, display_width, display_height)
-    labels = list(range(len(label_list)))
+    # Add dummy labels to access more colors in palette, then use specific indices
+    # to avoid duplicate colors (library has ~10 color palette)
+    extended_labels = label_list + ["_d1", "_d2", "_d3", "_d4", "_d5"]
+    # Map columns to different color slots: skip indices to get distinct colors
+    labels = [0, 1, 3, 4, 6, 7, 9, 10, 12]  # 9 columns mapped to spread-out colors
 
     # Detection component (v10 format) with display dimensions
     result = detection(
         image_path=temp_path,
-        label_list=label_list,
+        label_list=extended_labels,
         bboxes=bboxes,
         labels=labels,
         height=display_height,
