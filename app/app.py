@@ -74,8 +74,8 @@ if 'template' not in st.session_state:
 image = Image.open(SAMPLE_IMAGE)
 img_width, img_height = image.size
 
-# Scale for display (responsive)
-DISPLAY_SCALE = 0.6
+# Scale for display (smaller for better mobile/tablet fit)
+DISPLAY_SCALE = 0.45
 display_width = int(img_width * DISPLAY_SCALE)
 display_height = int(img_height * DISPLAY_SCALE)
 
