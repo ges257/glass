@@ -156,12 +156,12 @@ The demo uses a pre-generated template and sample page to demonstrate the adjust
 
 ---
 
-## Author
+<div align="center">
 
-**Gregory E. Schwartz**
-- M.S. Artificial Intelligence (Yeshiva University)
-- MBA (Cornell University)
+**Part of the AI/ML Portfolio**
 
----
+[Return to Home](https://github.com/ges257/home) | [LinkedIn](https://linkedin.com/in/gregory-e-schwartz)
 
-![Footer](https://capsule-render.vercel.app/api?type=rect&color=0D1B2A&height=30&section=footer)
+</div>
+
+![Footer](https://capsule-render.vercel.app/api?type=rect&color=0D1B2A&height=40&section=footer)
