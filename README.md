@@ -149,7 +149,7 @@ The demo uses a pre-generated template and sample page to demonstrate the adjust
 
 **Part of the AI/ML Portfolio**
 
-[Return to Home](https://github.com/ges257/home) | [LinkedIn](https://linkedin.com/in/gregory-e-schwartz)
+[Return to Home](https://github.com/ges257) | [LinkedIn](https://linkedin.com/in/gregory-e-schwartz)
 
 </div>
 
